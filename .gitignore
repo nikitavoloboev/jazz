@@ -25,3 +25,5 @@ test-results
 .vscode/settings.json
 
 .svelte-kit
+
+.repo_ignore
