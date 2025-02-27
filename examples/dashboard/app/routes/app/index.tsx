@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 function RouteComponent() {
   return (
     <>
-      <div>jazz dash</div>
+      <div>todos</div>
     </>
   );
 }

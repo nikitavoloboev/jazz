@@ -9,6 +9,7 @@ import * as React from "react";
 import { DefaultCatchBoundary } from "~/components/DefaultCatchBoundary";
 import { NotFound } from "~/components/NotFound";
 import { seo } from "~/lib/seo";
+// @ts-ignore
 import appCss from "~/styles/app.css?url";
 
 export const Route = createRootRouteWithContext<{
