@@ -22,9 +22,9 @@ export function GridView({
         <div
           key={childIndex}
           className={clsx(
-            "bg-gray-100 p-3 rounded-lg transition-colors overflow-hidden",
+            "bg-gray-100 p-4 rounded-2xl transition-colors overflow-hidden",
             isCoId(child)
-              ? "bg-white border hover:bg-gray-100/5 cursor-pointer shadow-sm"
+              ? "bg-white border hover:bg-opacity-50 transition-opacity duration-600 cursor-pointer shadow-sm group"
               : "bg-gray-50",
           )}
           onClick={() =>
@@ -34,20 +34,24 @@ export function GridView({
         >
           <h3 className="truncate">
             {isCoId(child) ? (
-              <span className="font-medium flex justify-between">
-                {key}
-
-                <div className="px-2 py-1 text-xs bg-gray-100 rounded">
+              <span className="font-medium flex justify-between items-center">
+                <div className="flex-1 mr-2 break-all font-semibold max-w-full capitalize">
+                  {key}
+                </div>
+                <div className="p-2 text-xs bg-gray-100 group-hover:bg-white rounded-full transition-colors duration-300">
                   <ResolveIcon coId={child as CoID<RawCoValue>} node={node} />
                 </div>
               </span>
             ) : (
-              <span>{key}</span>
+              <span className="truncate">{key}</span>
             )}
           </h3>
+
           <div className="mt-2 text-sm">
             {isCoId(child) ? (
-              <CoMapPreview coId={child as CoID<RawCoValue>} node={node} />
+              <div className="break-all max-w-full">
+                <CoMapPreview coId={child as CoID<RawCoValue>} node={node} />
+              </div>
             ) : (
               <ValueRenderer
                 json={child}

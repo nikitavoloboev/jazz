@@ -47,7 +47,7 @@ export function ValueRenderer({
 
   if (typeof json === "string") {
     return (
-      <span className="text-green-900 font-mono">
+      <span className="text-green-900 font-medium font-mono">
         {/* <span className="select-none opacity-70">{'"'}</span> */}
         {json}
         {/* <span className="select-none opacity-70">{'"'}</span> */}
