@@ -31,9 +31,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
             <button
               onClick={() => onBreadcrumbClick(index)}
               className={`text-indigo-700 font-medium ${
-                !isRootOnly
-                  ? "hover:text-indigo-900 hover:bg-indigo-500/20 px-2 py-1 rounded-xl transition-colors"
-                  : ""
+                !isRootOnly ? "hover:text-indigo-500 transition-colors" : ""
               }`}
             >
               {isRoot ? page.name || "Root" : page.name}
