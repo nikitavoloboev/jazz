@@ -47,7 +47,7 @@ export function ValueRenderer({
 
   if (typeof json === "string") {
     return (
-      <span className="text-green-900 font-medium font-mono">
+      <span className="text-green-900 font-medium font-mono break-all max-w-full">
         {/* <span className="select-none opacity-70">{'"'}</span> */}
         {json}
         {/* <span className="select-none opacity-70">{'"'}</span> */}
@@ -101,12 +101,6 @@ export function ValueRenderer({
                     .slice(0, 3)
                     .join("\n") + (Object.keys(json).length > 2 ? "\n..." : "")}
             </pre>
-            <button
-              onClick={() => setIsExpanded(!isExpanded)}
-              className="text-xs text-gray-500 hover:text-gray-700"
-            >
-              {isExpanded ? "Show less" : "Show more"}
-            </button>
           </span>
         ) : (
           <pre className="whitespace-pre-wrap">
@@ -187,12 +181,12 @@ export const CoMapPreview = ({
 
   return (
     <div className="text-sm flex flex-col gap-2 items-start">
-      <div className="grid grid-cols-[auto_1fr] gap-2">
+      <div className="grid grid-cols-[auto_1fr] gap-3">
         {Object.entries(snapshot)
           .slice(0, limit)
           .map(([key, value]) => (
             <React.Fragment key={key}>
-              <span className="font-medium">{key}: </span>
+              <span className="font-medium capitalize">{key}: </span>
               <span>
                 <ValueRenderer json={value} />
               </span>

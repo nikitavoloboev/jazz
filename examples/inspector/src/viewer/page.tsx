@@ -88,10 +88,10 @@ export function Page({
             </span>
           </h2>
           <div className="flex items-center gap-3">
-            <span className="text-xs text-neutral-700 font-medium p-3 -ml-0.5 rounded-xl bg-neutral-700/5 inline-block font-mono">
+            <span className="text-sm text-neutral-700 font-medium p-3 -ml-0.5 rounded-xl bg-neutral-700/5 inline-block font-mono">
               {type && <TypeIcon type={type} extendedType={extendedType} />}
             </span>
-            <span className="text-xs text-neutral-700 font-medium p-3 -ml-0.5 rounded-xl bg-neutral-700/5 inline-block font-mono">
+            <span className="text-sm text-neutral-700 font-medium p-3 -ml-0.5 rounded-xl bg-neutral-700/5 inline-block font-mono">
               {coId}
             </span>
           </div>
