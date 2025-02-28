@@ -128,7 +128,7 @@ export default function CoJsonViewerApp() {
           <form onSubmit={handleCoValueIdSubmit}>
             {path.length !== 0 && (
               <input
-                className="border p-2 rounded-lg min-w-[21rem] font-mono"
+                className="border hover:border-gray-300 transition-colors p-2 rounded-xl min-w-[21rem] font-mono"
                 placeholder="co_z1234567890abcdef123456789"
                 value={coValueId}
                 onChange={(e) =>
@@ -228,7 +228,7 @@ function AccountSwitcher({
             setCurrentAccount(account || null);
           }
         }}
-        className="p-2 px-4 bg-gray-100/50 border border-indigo-500/10 backdrop-blur-sm rounded-md text-indigo-700 appearance-none"
+        className="p-2 px-4 bg-gray-100/50 border border-indigo-500/10 backdrop-blur-sm rounded-xl text-indigo-700 font-mono appearance-none"
       >
         {accounts.map((account) => (
           <option key={account.id} value={account.id}>

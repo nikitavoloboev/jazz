@@ -11,10 +11,10 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
   onBreadcrumbClick,
 }) => {
   return (
-    <div className="z-20 relative bg-indigo-400/10 backdrop-blur-sm rounded-lg inline-flex px-2 py-1 whitespace-pre transition-all items-center space-x-1 min-h-10">
+    <div className="z-20 relative bg-indigo-400/10 hover:bg-indigo-400/25 backdrop-blur-sm rounded-xl inline-flex px-2 py-1 whitespace-pre transition-all items-center space-x-1 min-h-10">
       <button
         onClick={() => onBreadcrumbClick(-1)}
-        className="flex items-center justify-center p-1 rounded-sm hover:bg-indigo-500/10 transition-colors"
+        className="flex items-center justify-center p-1 rounded-md"
         aria-label="Go to home"
       >
         <img src="jazz-logo.png" alt="Jazz Logo" className="size-5" />
@@ -27,7 +27,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
             )}
             <button
               onClick={() => onBreadcrumbClick(index)}
-              className="text-indigo-700 hover:underline"
+              className="text-indigo-700 font-medium"
             >
               {index === 0 ? page.name || "Root" : page.name}
             </button>
