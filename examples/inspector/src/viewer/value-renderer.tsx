@@ -18,8 +18,6 @@ export function ValueRenderer({
   compact?: boolean;
   onCoIDClick?: (childNode: CoID<RawCoValue>) => void;
 }) {
-  const [isExpanded, setIsExpanded] = useState(false);
-
   if (typeof json === "undefined" || json === undefined) {
     return <span className="text-gray-400">undefined</span>;
   }
@@ -93,14 +91,7 @@ export function ValueRenderer({
           <span>
             Object{" "}
             <span className="text-gray-500">({Object.keys(json).length})</span>
-            <pre className="mt-1 text-sm whitespace-pre-wrap">
-              {isExpanded
-                ? JSON.stringify(json, null, 2)
-                : JSON.stringify(json, null, 2)
-                    .split("\n")
-                    .slice(0, 3)
-                    .join("\n") + (Object.keys(json).length > 2 ? "\n..." : "")}
-            </pre>
+            <pre className="mt-1 text-sm whitespace-pre-wrap"></pre>
           </span>
         ) : (
           <pre className="whitespace-pre-wrap">
