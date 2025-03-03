@@ -8,7 +8,8 @@
     "noEmitHelpers": false,
     "skipLibCheck": true,
     "outDir": "./dist",
-    "baseUrl": "./packages"
+    "baseUrl": "./packages",
+    "moduleDetection": "force"
   },
   "exclude": ["node_modules", "target"]
 }

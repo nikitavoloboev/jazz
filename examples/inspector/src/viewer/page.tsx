@@ -55,7 +55,7 @@ export function Page({
     <div
       style={style}
       className={clsx(
-        "absolute inset-0 border border-gray-900/5 bg-clip-padding bg-white rounded-xl shadow-lg p-6 animate-in",
+        "absolute inset-0 border border-gray-900/5 bg-clip-padding bg-gray-200 rounded-xl shadow-lg p-4 sm:p-10 animate-in",
       )}
     >
       {!isTopLevel && (
@@ -68,13 +68,13 @@ export function Page({
           aria-hidden="true"
         ></div>
       )}
-      <div className="flex justify-between items-center mb-4">
-        <div className="flex flex-col gap-2">
-          <h2 className="text-2xl font-bold flex items-start flex-col gap-1">
-            <span>
+      <div className="flex flex-col lg:flex-row justify-between items-center mb-4 gap-4">
+        <div className="flex flex-col gap-6 items-center lg:items-start w-full px-2">
+          <h2 className="text-xl lg:text-2xl font-semibold flex items-start flex-col gap-1 w-full">
+            <span className="truncate max-w-full text-center lg:text-left">
               {name}
               {typeof snapshot === "object" && "name" in snapshot ? (
-                <span className="text-gray-600 font-medium">
+                <span className="text-gray-600 font-medium truncate">
                   {" "}
                   {
                     (
@@ -87,11 +87,11 @@ export function Page({
               ) : null}
             </span>
           </h2>
-          <div className="flex items-center gap-2">
-            <span className="text-xs text-gray-700 font-medium py-0.5 px-1 -ml-0.5 rounded bg-gray-700/5 inline-block font-mono">
+          <div className="flex items-center gap-3 flex-nowrap sm:flex-wrap justify-start w-full overflow-x-auto sm:overflow-visible [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+            <span className="text-sm text-neutral-700 font-medium p-2 sm:p-3 -ml-0.5 rounded-xl bg-neutral-700/5 inline-block font-mono whitespace-nowrap overflow-hidden text-ellipsis sm:break-all flex-shrink-0 sm:flex-shrink">
               {type && <TypeIcon type={type} extendedType={extendedType} />}
             </span>
-            <span className="text-xs text-gray-700 font-medium py-0.5 px-1 -ml-0.5 rounded bg-gray-700/5 inline-block font-mono">
+            <span className="text-sm text-neutral-700 font-medium p-2 sm:p-3 -ml-0.5 rounded-xl bg-neutral-700/5 inline-block font-mono whitespace-nowrap overflow-hidden text-ellipsis sm:break-all flex-shrink-0 sm:flex-shrink">
               {coId}
             </span>
           </div>

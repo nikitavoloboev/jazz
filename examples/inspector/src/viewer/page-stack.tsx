@@ -1,5 +1,5 @@
 import { CoID, LocalNode, RawCoValue } from "cojson";
-import { Page } from "./page"; // Assuming you have a Page component
+import { Page } from "./page";
 
 // Define the structure of a page in the path
 interface PageInfo {
@@ -24,7 +24,7 @@ export function PageStack({
   children,
 }: PageStackProps) {
   return (
-    <div className="relative mt-4 h-[calc(100vh-6rem)]">
+    <div className="relative mt-4 h-[calc(100vh-5rem)] lg:h-[calc(100vh-6rem)]">
       {children && <div className="absolute inset-0 pb-20">{children}</div>}
       {node &&
         path.map((page, index) => (

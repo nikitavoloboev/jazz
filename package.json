@@ -39,7 +39,8 @@
     "changeset": "changeset",
     "changeset-version": "changeset version && pnpm i --no-frozen-lockfile",
     "release": "turbo run build --filter='./packages/*' && pnpm changeset publish && git push --follow-tags",
-    "clean": "rm -rf ./packages/*/dist && rm -rf ./packages/*/node_modules && rm -rf ./examples/*/node_modules && rm -rf ./examples/*/dist"
+    "clean": "rm -rf ./packages/*/dist && rm -rf ./packages/*/node_modules && rm -rf ./examples/*/node_modules && rm -rf ./examples/*/dist",
+    "s": "bun --watch scripts/run.ts"
   },
   "version": "0.0.0",
   "pnpm": {

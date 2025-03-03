@@ -122,21 +122,23 @@ export default function CoJsonViewerApp() {
 
   return (
     <div className="w-full h-screen bg-gray-100 p-4 overflow-hidden flex flex-col">
-      <div className="flex items-center mb-4 gap-4">
-        <Breadcrumbs path={path} onBreadcrumbClick={goToIndex} />
-        <div className="flex-1">
-          <form onSubmit={handleCoValueIdSubmit}>
-            {path.length !== 0 && (
-              <input
-                className="border p-2 rounded-lg min-w-[21rem] font-mono"
-                placeholder="co_z1234567890abcdef123456789"
-                value={coValueId}
-                onChange={(e) =>
-                  setCoValueId(e.target.value as CoID<RawCoValue>)
-                }
-              />
-            )}
-          </form>
+      <div className="flex flex-col sm:flex-row items-start sm:items-center mb-4 gap-4">
+        <div className="flex flex-1 w-full sm:w-auto items-center gap-4">
+          <Breadcrumbs path={path} onBreadcrumbClick={goToIndex} />
+          <div className="flex-1">
+            <form onSubmit={handleCoValueIdSubmit}>
+              {path.length !== 0 && (
+                <input
+                  className="border hover:border-gray-300 transition-colors p-2 rounded-xl sm:w-[10rem] lg:min-w-[25rem] font-mono"
+                  placeholder="co_z1234567890abcdef123456789"
+                  value={coValueId}
+                  onChange={(e) =>
+                    setCoValueId(e.target.value as CoID<RawCoValue>)
+                  }
+                />
+              )}
+            </form>
+          </div>
         </div>
         <AccountSwitcher
           accounts={accounts}
@@ -144,6 +146,7 @@ export default function CoJsonViewerApp() {
           setCurrentAccount={setCurrentAccount}
           deleteCurrentAccount={deleteCurrentAccount}
           localNode={localNode}
+          showIdOnLargeScreen={true}
         />
       </div>
 
@@ -209,15 +212,17 @@ function AccountSwitcher({
   setCurrentAccount,
   deleteCurrentAccount,
   localNode,
+  showIdOnLargeScreen,
 }: {
   accounts: Account[];
   currentAccount: Account | null;
   setCurrentAccount: (account: Account | null) => void;
   deleteCurrentAccount: () => void;
   localNode: LocalNode | null;
+  showIdOnLargeScreen?: boolean;
 }) {
   return (
-    <div className="relative flex items-center gap-1">
+    <div className="relative flex items-center gap-1 w-full sm:w-auto">
       <select
         value={currentAccount?.id || "add-account"}
         onChange={(e) => {
@@ -228,12 +233,16 @@ function AccountSwitcher({
             setCurrentAccount(account || null);
           }
         }}
-        className="p-2 px-4 bg-gray-100/50 border border-indigo-500/10 backdrop-blur-sm rounded-md text-indigo-700 appearance-none"
+        className="w-full sm:w-auto p-2 px-4 bg-gray-100/50 border border-indigo-500/10 backdrop-blur-sm rounded-xl text-indigo-700 font-mono appearance-none"
       >
         {accounts.map((account) => (
           <option key={account.id} value={account.id}>
             {localNode ? (
-              <AccountNameDisplay accountId={account.id} node={localNode} />
+              <AccountNameDisplay
+                accountId={account.id}
+                node={localNode}
+                showId={showIdOnLargeScreen}
+              />
             ) : (
               account.id
             )}
@@ -303,9 +312,11 @@ function AddAccountForm({
 function AccountNameDisplay({
   accountId,
   node,
+  showId = true,
 }: {
   accountId: CoID<RawAccount>;
   node: LocalNode;
+  showId?: boolean;
 }) {
   const { snapshot } = useResolvedCoValue(accountId, node);
   const [name, setName] = useState<string | null>(null);
@@ -325,5 +336,5 @@ function AccountNameDisplay({
     }
   }, [snapshot, node]);
 
-  return name ? `${name} <${accountId}>` : accountId;
+  return name ? (showId ? `${name} <${accountId}>` : name) : accountId;
 }
